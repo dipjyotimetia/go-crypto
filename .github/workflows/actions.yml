@@ -1,0 +1,28 @@
+name: Build and Deploy to CloudFunction
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.gcp_credentials }}
+          export_default_credentials: true
+      - uses: actions/checkout@v2
+      - name: Deploy serverless function
+        run: |
+          gcloud functions deploy "GoCrypto" \
+            --runtime go116 --trigger-http \
+            --allow-unauthenticated \
+            --region australia-southeast1 \
+            --update-env-vars GOOGLE_CLOUD_PROJECT=${{ secrets.GCP_PROJECT_ID }}\
+            --max-instances 2 \
+            --memory 128mb \
+            --service-account=${{ secrets.service_account }} \
+            --no-user-output-enabled
