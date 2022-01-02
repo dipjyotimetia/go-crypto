@@ -13,11 +13,12 @@ jobs:
       - id: auth
         uses: google-github-actions/auth@v0
         with:
-          credentials_json: '${{ secrets.SERVICE_ACCOUNT }}'
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
       - id: 'deploy'
         uses: 'google-github-actions/deploy-cloud-functions@v0'
         with:
           name: 'GoCrypto'
           runtime: 'go116'
           region: australia-southeast1
+          service_account_email: '${{ secrets.SERVICE_ACCOUNT }}'
           secret_environment_variables: 'API_KEY=projects/${{ secrets.GCP_PROJECT_ID }}/secrets/BNC_API_KEY/versions/1,SECRET_KEY=projects/${{ secrets.GCP_PROJECT_ID }}/secrets/BNC_SECRET_KEY/versions/1'
