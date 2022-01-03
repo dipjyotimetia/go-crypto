@@ -28,7 +28,7 @@ func AddUpdateWatchlist() func(w http.ResponseWriter, r *http.Request) {
 		}
 		c.AddUpdateWatchList(ctx, data.Symbol, data.Price)
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(fmt.Sprintf("%s Added to watchlist", data.Symbol)))
+		w.Write([]byte(fmt.Sprintf("%s added to watchlist", data.Symbol)))
 	}
 }
 
@@ -49,6 +49,6 @@ func DeleteWatchlist() func(w http.ResponseWriter, r *http.Request) {
 		}
 		c.DeleteWatchlist(ctx, data.Symbol)
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(fmt.Sprintf("%s Delete from watchlist", data.Symbol)))
+		w.Write([]byte(fmt.Sprintf("%s deleted from watchlist", data.Symbol)))
 	}
 }

@@ -8,6 +8,8 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+// https://cloud.google.com/firestore/docs/query-data/queries
+
 type CryptoService interface {
 	UpdatePriceInfo(ctx context.Context, symbol, price string)
 	AddUpdateWatchlist(ctx context.Context, symbol string, price string)
