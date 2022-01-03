@@ -3,6 +3,7 @@ package router
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/go-crypto/internal/coin"
@@ -26,8 +27,8 @@ func Watchlist() func(w http.ResponseWriter, r *http.Request) {
 		}
 		ctx := context.Background()
 		c := coin.NewConnection()
-		ref := c.AddToWatchList(ctx, data.Symbol, data.Price)
+		c.AddToWatchList(ctx, data.Symbol, data.Price)
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(ref))
+		w.Write([]byte(fmt.Sprintf("%s Added to watchlist", data.Symbol)))
 	}
 }
