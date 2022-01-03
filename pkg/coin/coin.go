@@ -7,12 +7,12 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-var symbols = []string{"SHIBAUD"}
+var symbols = []string{"BTCAUD"}
 
 func (b Bnc) PriceService(ctx context.Context) {
 	price, err := b.NewListPricesService().Symbol(symbols[0]).Do(ctx)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(err.Error())
 	}
 	conn := store.NewFireStoreConnection(ctx)
 	priceInfo := map[string]string{}
@@ -25,7 +25,7 @@ func (b Bnc) PriceService(ctx context.Context) {
 func (b Bnc) AveragePriceService(ctx context.Context) {
 	price, err := b.NewAveragePriceService().Symbol(symbols[0]).Do(context.Background())
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(err.Error())
 	}
 	log.Info(price)
 }
