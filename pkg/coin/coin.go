@@ -2,7 +2,6 @@ package coin
 
 import (
 	"context"
-	"fmt"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -14,7 +13,7 @@ func (b Bnc) PriceService() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(price)
+	log.Info(price)
 }
 
 func (b Bnc) AveragePriceService() {
@@ -22,5 +21,5 @@ func (b Bnc) AveragePriceService() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(price)
+	log.Info(price)
 }
