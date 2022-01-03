@@ -1,6 +1,7 @@
 package coin
 
 import (
+	"context"
 	"os"
 
 	"github.com/adshao/go-binance/v2"
@@ -12,8 +13,8 @@ var (
 )
 
 type CryptoService interface {
-	PriceService()
-	AveragePriceService()
+	PriceService(ctx context.Context)
+	AveragePriceService(ctx context.Context)
 }
 
 type Bnc struct {
