@@ -6,7 +6,12 @@ import (
 	"github.com/go-crypto/internal/store"
 )
 
-func (b Bnc) AddToWatchList(ctx context.Context, symbol, price string) {
+func (b Bnc) AddUpdateWatchList(ctx context.Context, symbol, price string) {
 	conn := store.NewFireStoreConnection(ctx)
-	conn.AddWatchlist(ctx, symbol, price)
+	conn.AddUpdateWatchlist(ctx, symbol, price)
+}
+
+func (b Bnc) DeleteWatchlist(ctx context.Context, symbol string) {
+	conn := store.NewFireStoreConnection(ctx)
+	conn.DeleteWatchlist(ctx, symbol)
 }

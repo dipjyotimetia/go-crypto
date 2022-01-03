@@ -10,25 +10,45 @@ import (
 	"github.com/google/uuid"
 )
 
-type Watch struct {
-	Symbol string `json:"symbol"`
-	Price  string `json:"price"`
-}
-
-func Watchlist() func(w http.ResponseWriter, r *http.Request) {
+func AddUpdateWatchlist() func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		w.Header().Set("x-request-id", uuid.New().String())
+		type Watch struct {
+			Symbol string `json:"symbol"`
+			Price  string `json:"price"`
+		}
 		var data *Watch
+		ctx := context.Background()
+		c := coin.NewConnection()
 		err := json.NewDecoder(r.Body).Decode(&data)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusBadRequest)
 			return
 		}
-		ctx := context.Background()
-		c := coin.NewConnection()
-		c.AddToWatchList(ctx, data.Symbol, data.Price)
+		c.AddUpdateWatchList(ctx, data.Symbol, data.Price)
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte(fmt.Sprintf("%s Added to watchlist", data.Symbol)))
+	}
+}
+
+func DeleteWatchlist() func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("x-request-id", uuid.New().String())
+		type Watch struct {
+			Symbol string `json:"symbol"`
+		}
+		var data *Watch
+		ctx := context.Background()
+		c := coin.NewConnection()
+		err := json.NewDecoder(r.Body).Decode(&data)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+		c.DeleteWatchlist(ctx, data.Symbol)
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(fmt.Sprintf("%s Delete from watchlist", data.Symbol)))
 	}
 }

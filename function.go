@@ -17,7 +17,8 @@ func GoCrypto(w http.ResponseWriter, r *http.Request) {
 
 	rc.Route("/api/v1", func(rc chi.Router) {
 		rc.Get("/trigger", router.Trigger())
-		rc.Post("/watchlist", router.Watchlist())
+		rc.Post("/watchlist", router.AddUpdateWatchlist())
+		rc.Delete("/watchlist", router.DeleteWatchlist())
 	})
 
 	cors.Default().Handler(rc).ServeHTTP(w, r)

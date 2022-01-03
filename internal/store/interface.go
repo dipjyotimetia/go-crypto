@@ -10,7 +10,8 @@ import (
 
 type CryptoService interface {
 	UpdatePriceInfo(ctx context.Context, symbol, price string)
-	AddWatchlist(ctx context.Context, symbol string, price string)
+	AddUpdateWatchlist(ctx context.Context, symbol string, price string)
+	DeleteWatchlist(ctx context.Context, symbol string)
 }
 
 type Store struct {
