@@ -8,15 +8,16 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-type PriceService interface {
+type CryptoService interface {
 	UpdatePriceInfo(ctx context.Context, symbol, price string)
+	AddWatchlist(ctx context.Context, symbol string, price string) string
 }
 
 type Store struct {
 	*firestore.Client
 }
 
-func NewFireStoreConnection(ctx context.Context) PriceService {
+func NewFireStoreConnection(ctx context.Context) CryptoService {
 	client, err := firestore.NewClient(ctx, os.Getenv("PROJECT_ID"))
 	if err != nil {
 		log.Fatal("firestore connection error", err.Error())

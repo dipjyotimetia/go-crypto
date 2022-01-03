@@ -15,6 +15,7 @@ var (
 type CryptoService interface {
 	PriceService(ctx context.Context)
 	AveragePriceService(ctx context.Context)
+	AddToWatchList(ctx context.Context, symbol string, price string) string
 }
 
 type Bnc struct {

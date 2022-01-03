@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/go-crypto/pkg/coin"
+	"github.com/go-crypto/internal/coin"
 	"github.com/google/uuid"
 )
 

@@ -7,9 +7,9 @@ import (
 )
 
 func (s Store) UpdatePriceInfo(ctx context.Context, symbol, price string) {
-	_, err := s.Client.Collection("bnb").Doc("pricing").Set(ctx, map[string]string{
-		"symbol": symbol,
-		"price":  price,
+	_, _, err := s.Client.Collection("pricing").Add(ctx, PriceInfo{
+		Symbol: symbol,
+		Price:  price,
 	})
 	if err != nil {
 		log.Fatal("error while updating price info", err.Error())
