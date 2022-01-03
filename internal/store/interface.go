@@ -16,10 +16,10 @@ type Store struct {
 	*firestore.Client
 }
 
-func NewFireConnection(ctx context.Context) PriceService {
+func NewFireStoreConnection(ctx context.Context) PriceService {
 	client, err := firestore.NewClient(ctx, os.Getenv("PROJECT_ID"))
 	if err != nil {
-		log.Fatalf(err.Error())
+		log.Fatal("firestore connection error", err.Error())
 	}
 	return &Store{client}
 }

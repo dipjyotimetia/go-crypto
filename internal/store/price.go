@@ -12,6 +12,6 @@ func (s Store) UpdatePriceInfo(ctx context.Context, symbol, price string) {
 		"price":  price,
 	})
 	if err != nil {
-		log.Fatalf(err.Error())
+		log.Fatal("error while updating price info", err.Error())
 	}
 }

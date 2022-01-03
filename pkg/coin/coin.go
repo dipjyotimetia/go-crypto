@@ -14,7 +14,7 @@ func (b Bnc) PriceService(ctx context.Context) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	conn := store.NewFireConnection(ctx)
+	conn := store.NewFireStoreConnection(ctx)
 	priceInfo := map[string]string{}
 	for _, symbolPrice := range price {
 		priceInfo[symbolPrice.Symbol] = symbolPrice.Price

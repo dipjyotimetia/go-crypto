@@ -19,6 +19,7 @@ jobs:
         with:
           name: 'GoCrypto'
           runtime: 'go116'
+          memory_mb: '128MB'
           region: australia-southeast1
           service_account_email: '${{ secrets.SERVICE_ACCOUNT }}'
           secret_environment_variables: 'API_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_API_KEY/versions/1,SECRET_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_SECRET_KEY/versions/1,PROJECT_ID=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/PROJECT_ID/versions/1'
