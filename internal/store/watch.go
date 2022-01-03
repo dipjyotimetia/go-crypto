@@ -7,7 +7,7 @@ import (
 )
 
 func (s Store) AddWatchlist(ctx context.Context, symbol, price string) string {
-	ref, _, err := s.Client.Collection("").Add(ctx, Watch{
+	ref, _, err := s.Client.Collection("watchlist").Add(ctx, Watch{
 		Symbol: symbol,
 		Price:  price,
 	})
