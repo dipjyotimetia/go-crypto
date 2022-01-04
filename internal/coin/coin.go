@@ -2,8 +2,11 @@ package coin
 
 import (
 	"context"
+	"encoding/json"
 
+	"github.com/go-crypto/internal/model"
 	"github.com/go-crypto/internal/store"
+	"github.com/go-crypto/pkg/request"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -23,9 +26,18 @@ func (b Bnc) PriceService(ctx context.Context) {
 }
 
 func (b Bnc) AveragePriceService(ctx context.Context) {
-	price, err := b.NewAveragePriceService().Symbol(symbols[0]).Do(context.Background())
+	req := request.NewHTTPConn()
+	res, err := req.HTTPGet("https://api.binance.com/api/v3/ticker/24hr",
+		map[string]string{"Content-Type": "application/json"},
+		map[string]string{"symbol": "SHIBAUD"})
 	if err != nil {
 		log.Fatal(err.Error())
 	}
-	log.Info(price)
+	var priceChange model.PriceChange
+	err = json.Unmarshal(res.Body(), &priceChange)
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+	conn := store.NewFireStoreConnection(ctx)
+	conn.PricingHistory(ctx, priceChange)
 }

@@ -3,11 +3,12 @@ package store
 import (
 	"context"
 
+	"github.com/go-crypto/internal/model"
 	log "github.com/sirupsen/logrus"
 )
 
 func (s Store) AddUpdateWatchlist(ctx context.Context, symbol, price string) {
-	_, err := s.Client.Collection("watchlist").Doc(symbol).Set(ctx, Watch{
+	_, err := s.Client.Collection("watchlist").Doc(symbol).Set(ctx, model.Watch{
 		Symbol: symbol,
 		Price:  price,
 	})

@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"cloud.google.com/go/firestore"
+	"github.com/go-crypto/internal/model"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -12,6 +13,7 @@ import (
 
 type CryptoService interface {
 	UpdatePriceInfo(ctx context.Context, symbol, price string)
+	PricingHistory(ctx context.Context, priceChange model.PriceChange)
 	AddUpdateWatchlist(ctx context.Context, symbol string, price string)
 	DeleteWatchlist(ctx context.Context, symbol string)
 }
