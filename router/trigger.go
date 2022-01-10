@@ -14,7 +14,7 @@ func Trigger() func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("x-request-id", uuid.New().String())
 		ctx := context.Background()
 		p := coin.NewConnection()
-		p.AveragePriceService(ctx)
+		p.PriceService(ctx)
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte("ok"))
 	}

@@ -12,7 +12,7 @@ import (
 // https://cloud.google.com/firestore/docs/query-data/queries
 
 type CryptoService interface {
-	UpdatePriceInfo(ctx context.Context, symbol, price string)
+	UpdatePriceInfo(ctx context.Context, coinInfo map[string]string)
 	PricingHistory(ctx context.Context, priceChange model.PriceChange)
 	AddUpdateWatchlist(ctx context.Context, symbol string, price string)
 	DeleteWatchlist(ctx context.Context, symbol string)
