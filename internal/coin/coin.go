@@ -18,12 +18,11 @@ var symbols = []string{
 	"ETHAUD",
 }
 
-func (b Bnc) PriceService(ctx context.Context) {
+func (b Bnc) PriceService(ctx context.Context, conn store.CryptoService) {
 	price, err := b.NewListPricesService().Symbol(symbols[0]).Do(ctx)
 	if err != nil {
 		log.Fatal(err.Error())
 	}
-	conn := store.NewFireStoreConnection(ctx)
 	coinInfo := map[string]string{}
 	for _, symbolPrice := range price {
 		coinInfo[symbolPrice.Symbol] = symbolPrice.Price
@@ -31,7 +30,7 @@ func (b Bnc) PriceService(ctx context.Context) {
 	conn.UpdatePriceInfo(ctx, coinInfo)
 }
 
-func (b Bnc) AveragePriceService(ctx context.Context) {
+func (b Bnc) AveragePriceService(ctx context.Context, conn store.CryptoService) {
 	req := request.NewHTTPConn()
 	res, err := req.HTTPGet("https://api.binance.com/api/v3/ticker/24hr",
 		map[string]string{"Content-Type": "application/json"},
@@ -44,6 +43,5 @@ func (b Bnc) AveragePriceService(ctx context.Context) {
 	if err != nil {
 		log.Fatal(err.Error())
 	}
-	conn := store.NewFireStoreConnection(ctx)
 	conn.PricingHistory(ctx, priceChange)
 }

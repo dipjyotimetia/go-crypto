@@ -5,11 +5,12 @@ import (
 	"os"
 
 	"github.com/adshao/go-binance/v2"
+	"github.com/go-crypto/internal/store"
 )
 
 type CryptoService interface {
-	PriceService(ctx context.Context)
-	AveragePriceService(ctx context.Context)
+	PriceService(ctx context.Context, conn store.CryptoService)
+	AveragePriceService(ctx context.Context, conn store.CryptoService)
 	AddUpdateWatchList(ctx context.Context, symbol string, price string)
 	DeleteWatchlist(ctx context.Context, symbol string)
 }
