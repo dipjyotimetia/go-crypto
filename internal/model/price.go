@@ -1,9 +1,5 @@
 package model
 
-import (
-	"time"
-)
-
 type PriceChange struct {
 	Symbol             string `json:"symbol"`
 	PriceChange        string `json:"priceChange"`
@@ -29,20 +25,20 @@ type PriceChange struct {
 }
 
 type UpdatePriceInfo struct {
-	Symbol         string    `firestore:"symbol,omitempty"`
-	HighPrice      string    `firestore:"highPrice,omitempty"`
-	LowPrice       string    `firestore:"lowPrice,omitempty"`
-	OccurrenceTime time.Time `firestore:"occurrenceTime"`
+	Symbol         string `firestore:"symbol,omitempty"`
+	HighPrice      string `firestore:"highPrice,omitempty"`
+	LowPrice       string `firestore:"lowPrice,omitempty"`
+	OccurrenceTime string `firestore:"occurrenceTime"`
 }
 
 type PriceInfo struct {
-	Symbol         string    `firestore:"symbol,omitempty"`
-	Price          string    `firestore:"price,omitempty"`
-	OccurrenceTime time.Time `firestore:"occurrenceTime"`
+	Symbol         string `firestore:"symbol,omitempty"`
+	Price          string `firestore:"price,omitempty"`
+	OccurrenceTime string `firestore:"occurrenceTime"`
 }
 
 type Watch struct {
-	Symbol         string    `firestore:"symbol,omitempty"`
-	Price          string    `firestore:"price,omitempty"`
-	OccurrenceTime time.Time `firestore:"occurrenceTime"`
+	Symbol         string `firestore:"symbol,omitempty"`
+	Price          string `firestore:"price,omitempty"`
+	OccurrenceTime string `firestore:"occurrenceTime"`
 }

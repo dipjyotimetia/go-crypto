@@ -13,7 +13,7 @@ func (s Store) UpdatePriceInfo(ctx context.Context, coinInfo map[string]string) 
 		_, _, err := s.Collection("pricing").Add(ctx, model.PriceInfo{
 			Symbol:         symbol,
 			Price:          price,
-			OccurrenceTime: time.Now().UTC(),
+			OccurrenceTime: time.Now().Format(time.RFC3339),
 		})
 		if err != nil {
 			log.Fatal("error while updating price info", err.Error())
@@ -26,7 +26,7 @@ func (s Store) PricingHistory(ctx context.Context, priceChange model.PriceChange
 		Symbol:         priceChange.Symbol,
 		HighPrice:      priceChange.HighPrice,
 		LowPrice:       priceChange.LowPrice,
-		OccurrenceTime: time.Now().UTC(),
+		OccurrenceTime: time.Now().UTC().Format(time.RFC3339),
 	})
 	if err != nil {
 		log.Fatal("error while adding price history", err.Error())
