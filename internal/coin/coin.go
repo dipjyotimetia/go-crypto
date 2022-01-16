@@ -10,6 +10,8 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+const pricingUrl = "https://api.binance.com/api/v3/ticker/24hr"
+
 var symbols = []string{
 	"BTCAUD",
 	"MATICAUD",
@@ -19,20 +21,22 @@ var symbols = []string{
 }
 
 func (b Bnc) PriceService(ctx context.Context, conn store.CryptoService) {
-	price, err := b.NewListPricesService().Symbol(symbols[0]).Do(ctx)
-	if err != nil {
-		log.Fatal(err.Error())
+	for _, symbol := range symbols {
+		price, err := b.NewListPricesService().Symbol(symbol).Do(ctx)
+		if err != nil {
+			log.Fatal(err.Error())
+		}
+		coinInfo := map[string]string{}
+		for _, symbolPrice := range price {
+			coinInfo[symbolPrice.Symbol] = symbolPrice.Price
+		}
+		conn.UpdatePriceInfo(ctx, coinInfo)
 	}
-	coinInfo := map[string]string{}
-	for _, symbolPrice := range price {
-		coinInfo[symbolPrice.Symbol] = symbolPrice.Price
-	}
-	conn.UpdatePriceInfo(ctx, coinInfo)
 }
 
 func (b Bnc) AveragePriceService(ctx context.Context, conn store.CryptoService) {
 	req := request.NewHTTPConn()
-	res, err := req.HTTPGet("https://api.binance.com/api/v3/ticker/24hr",
+	res, err := req.HTTPGet(pricingUrl,
 		map[string]string{"Content-Type": "application/json"},
 		map[string]string{"symbol": "SHIBAUD"})
 	if err != nil {
