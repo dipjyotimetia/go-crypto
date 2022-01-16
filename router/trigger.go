@@ -15,6 +15,7 @@ func Trigger(ctx context.Context, conn store.CryptoService) func(w http.Response
 		w.Header().Set("x-request-id", uuid.New().String())
 		p := coin.NewConnection()
 		p.PriceService(ctx, conn)
+		p.AveragePriceService(ctx, conn)
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte("ok"))
 	}
