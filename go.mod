@@ -11,5 +11,6 @@ require (
 	github.com/google/uuid v1.3.0
 	github.com/rs/cors v1.8.2
 	github.com/sirupsen/logrus v1.8.1
-	golang.org/x/net v0.0.0-20220107192237-5cfca573fb4d
+	github.com/stretchr/testify v1.7.0
+	golang.org/x/net v0.0.0-20220114011407-0dd24b26b47d
 )
