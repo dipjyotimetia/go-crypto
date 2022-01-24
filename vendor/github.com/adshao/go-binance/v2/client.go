@@ -65,6 +65,9 @@ type SideEffectType string
 // FuturesTransferType define futures transfer type
 type FuturesTransferType int
 
+// TransactionType define transaction type
+type TransactionType string
+
 // Endpoints
 const (
 	baseAPIMainURL    = "https://api.binance.com"
@@ -147,6 +150,11 @@ const (
 	SideEffectTypeNoSideEffect SideEffectType = "NO_SIDE_EFFECT"
 	SideEffectTypeMarginBuy    SideEffectType = "MARGIN_BUY"
 	SideEffectTypeAutoRepay    SideEffectType = "AUTO_REPAY"
+
+	TransactionTypeDeposit  TransactionType = "0"
+	TransactionTypeWithdraw TransactionType = "1"
+	TransactionTypeBuy      TransactionType = "0"
+	TransactionTypeSell     TransactionType = "1"
 
 	timestampKey  = "timestamp"
 	signatureKey  = "signature"
@@ -423,6 +431,11 @@ func (c *Client) NewGetAccountService() *GetAccountService {
 	return &GetAccountService{c: c}
 }
 
+// NewGetAPIKeyPermission init getting API key permission
+func (c *Client) NewGetAPIKeyPermission() *GetAPIKeyPermission {
+	return &GetAPIKeyPermission{c: c}
+}
+
 // NewListSavingsFlexibleProductsService get flexible products list (Savings)
 func (c *Client) NewListSavingsFlexibleProductsService() *ListSavingsFlexibleProductsService {
 	return &ListSavingsFlexibleProductsService{c: c}
@@ -653,6 +666,11 @@ func (c *Client) NewDustTransferService() *DustTransferService {
 	return &DustTransferService{c: c}
 }
 
+// NewTransferToSubAccountService transfer to subaccount service
+func (c *Client) NewTransferToSubAccountService() *TransferToSubAccountService {
+	return &TransferToSubAccountService{c: c}
+}
+
 // NewAssetDividendService init the asset dividend list service
 func (c *Client) NewAssetDividendService() *AssetDividendService {
 	return &AssetDividendService{c: c}
@@ -661,4 +679,29 @@ func (c *Client) NewAssetDividendService() *AssetDividendService {
 // NewUserUniversalTransferService
 func (c *Client) NewUserUniversalTransferService() *CreateUserUniversalTransferService {
 	return &CreateUserUniversalTransferService{c: c}
+}
+
+// NewDustTransferService init Get All Margin Assets service
+func (c *Client) NewGetAllMarginAssetsService() *GetAllMarginAssetsService {
+	return &GetAllMarginAssetsService{c: c}
+}
+
+// NewFiatDepositWithdrawHistoryService init the fiat deposit/withdraw history service
+func (c *Client) NewFiatDepositWithdrawHistoryService() *FiatDepositWithdrawHistoryService {
+	return &FiatDepositWithdrawHistoryService{c: c}
+}
+
+// NewFiatPaymentsHistoryService init the fiat payments history service
+func (c *Client) NewFiatPaymentsHistoryService() *FiatPaymentsHistoryService {
+	return &FiatPaymentsHistoryService{c: c}
+}
+
+// NewFiatPaymentsHistoryService init the spot rebate history service
+func (c *Client) NewSpotRebateHistoryService() *SpotRebateHistoryService {
+	return &SpotRebateHistoryService{c: c}
+}
+
+// NewConvertTradeHistoryService init the convert trade history service
+func (c *Client) NewConvertTradeHistoryService() *ConvertTradeHistoryService {
+	return &ConvertTradeHistoryService{c: c}
 }
