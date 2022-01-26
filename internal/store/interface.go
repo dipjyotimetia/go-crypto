@@ -15,7 +15,7 @@ type CryptoService interface {
 	PricingHistory(ctx context.Context, priceChange model.PriceChange)
 	AddUpdateWatchlist(ctx context.Context, symbol string, price string)
 	DeleteWatchlist(ctx context.Context, symbol string)
-	RegisterUser(ctx context.Context, user model.Register)
+	RegisterUser(ctx context.Context, user model.Register) error
 	LoginUser(ctx context.Context, user model.Login) error
 }
 

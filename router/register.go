@@ -8,6 +8,7 @@ import (
 	"github.com/go-crypto/internal/auth"
 	"github.com/go-crypto/internal/model"
 	"github.com/go-crypto/internal/store"
+	"github.com/go-crypto/pkg/errorz"
 	"github.com/go-crypto/pkg/utils"
 	"github.com/go-playground/validator/v10"
 	"github.com/google/uuid"
@@ -31,6 +32,13 @@ func Register(ctx context.Context, validate *validator.Validate, conn store.Cryp
 			utils.ValidateRequest(err, w)
 		}
 		c := auth.NewUserService(conn)
-		c.RegisterUser(ctx, register)
+		err = c.RegisterUser(ctx, register)
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write(errorz.NewError("registration error", "check request body", err.Error()))
+			return
+		}
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("user created successfully"))
 	}
 }
