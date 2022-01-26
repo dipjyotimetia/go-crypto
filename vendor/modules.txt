@@ -17,7 +17,7 @@ github.com/GoogleCloudPlatform/functions-framework-go/funcframework
 github.com/GoogleCloudPlatform/functions-framework-go/internal/events/pubsub
 github.com/GoogleCloudPlatform/functions-framework-go/internal/fftypes
 github.com/GoogleCloudPlatform/functions-framework-go/internal/registry
-# github.com/adshao/go-binance/v2 v2.3.3
+# github.com/adshao/go-binance/v2 v2.3.4
 ## explicit
 github.com/adshao/go-binance/v2
 github.com/adshao/go-binance/v2/common
@@ -46,9 +46,20 @@ github.com/davecgh/go-spew/spew
 ## explicit
 github.com/go-chi/chi/v5
 github.com/go-chi/chi/v5/middleware
+# github.com/go-playground/locales v0.14.0
+github.com/go-playground/locales
+github.com/go-playground/locales/currency
+# github.com/go-playground/universal-translator v0.18.0
+github.com/go-playground/universal-translator
+# github.com/go-playground/validator/v10 v10.10.0
+## explicit
+github.com/go-playground/validator/v10
 # github.com/go-resty/resty/v2 v2.7.0
 ## explicit
 github.com/go-resty/resty/v2
+# github.com/golang-jwt/jwt/v4 v4.2.0
+## explicit
+github.com/golang-jwt/jwt/v4
 # github.com/golang/groupcache v0.0.0-20200121045136-8c9f03a8e57e
 github.com/golang/groupcache/lru
 # github.com/golang/protobuf v1.5.2
@@ -75,6 +86,8 @@ github.com/googleapis/gax-go/v2/apierror/internal/proto
 github.com/json-iterator/go
 # github.com/klauspost/compress v1.13.1
 github.com/klauspost/compress/flate
+# github.com/leodido/go-urn v1.2.1
+github.com/leodido/go-urn
 # github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421
 github.com/modern-go/concurrent
 # github.com/modern-go/reflect2 v0.0.0-20180701023420-4b7aa43c6742
@@ -121,7 +134,12 @@ go.uber.org/zap/internal/bufferpool
 go.uber.org/zap/internal/color
 go.uber.org/zap/internal/exit
 go.uber.org/zap/zapcore
-# golang.org/x/net v0.0.0-20220114011407-0dd24b26b47d
+# golang.org/x/crypto v0.0.0-20210711020723-a769d52b0f97
+## explicit
+golang.org/x/crypto/bcrypt
+golang.org/x/crypto/blowfish
+golang.org/x/crypto/sha3
+# golang.org/x/net v0.0.0-20220121210141-e204ce36a2ba
 ## explicit
 golang.org/x/net/context
 golang.org/x/net/context/ctxhttp
@@ -140,11 +158,16 @@ golang.org/x/oauth2/google/internal/externalaccount
 golang.org/x/oauth2/internal
 golang.org/x/oauth2/jws
 golang.org/x/oauth2/jwt
-# golang.org/x/sys v0.0.0-20211007075335-d3039528d8ac
+# golang.org/x/sys v0.0.0-20211216021012-1d35b9e2eb4e
+golang.org/x/sys/cpu
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix
 golang.org/x/sys/windows
-# golang.org/x/text v0.3.6
+# golang.org/x/text v0.3.7
+golang.org/x/text/internal/language
+golang.org/x/text/internal/language/compact
+golang.org/x/text/internal/tag
+golang.org/x/text/language
 golang.org/x/text/secure/bidirule
 golang.org/x/text/transform
 golang.org/x/text/unicode/bidi
@@ -280,7 +303,7 @@ google.golang.org/protobuf/types/known/emptypb
 google.golang.org/protobuf/types/known/structpb
 google.golang.org/protobuf/types/known/timestamppb
 google.golang.org/protobuf/types/known/wrapperspb
-# gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c
+# gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
 gopkg.in/yaml.v3
 # nhooyr.io/websocket v1.8.7
 nhooyr.io/websocket
