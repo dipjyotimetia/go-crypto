@@ -9,6 +9,7 @@ import (
 	"github.com/go-crypto/internal/auth"
 	"github.com/go-crypto/internal/model"
 	"github.com/go-crypto/internal/store"
+	"github.com/go-crypto/pkg/errorz"
 	"github.com/go-crypto/pkg/utils"
 	"github.com/go-playground/validator/v10"
 	"github.com/golang-jwt/jwt/v4"
@@ -43,6 +44,7 @@ func Signin(ctx context.Context, validate *validator.Validate, conn store.Crypto
 		// if NOT, then we return an "Unauthorized" status
 		if err != nil {
 			w.WriteHeader(http.StatusUnauthorized)
+			w.Write(errorz.NewError("login error", "login failed", err.Error()))
 			return
 		}
 
@@ -79,6 +81,15 @@ func Signin(ctx context.Context, validate *validator.Validate, conn store.Crypto
 			Name:    "token",
 			Value:   tokenString,
 			Expires: expirationTime,
+		})
+	}
+}
+
+func Logout() func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		http.SetCookie(w, &http.Cookie{
+			Name:   "token",
+			MaxAge: -1,
 		})
 	}
 }

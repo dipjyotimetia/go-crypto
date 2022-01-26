@@ -17,6 +17,7 @@ type CryptoService interface {
 	DeleteWatchlist(ctx context.Context, symbol string)
 	RegisterUser(ctx context.Context, user model.Register) error
 	LoginUser(ctx context.Context, user model.Login) error
+	ResetPassword(ctx context.Context, reset model.ResetPassword) error
 }
 
 type Store struct {

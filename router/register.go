@@ -42,3 +42,37 @@ func Register(ctx context.Context, validate *validator.Validate, conn store.Cryp
 		w.Write([]byte("user created successfully"))
 	}
 }
+
+func ResetUser(ctx context.Context, validate *validator.Validate, conn store.CryptoService) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("x-request-id", uuid.NewString())
+
+		var reset model.ResetPassword
+
+		err := json.NewDecoder(r.Body).Decode(&reset)
+		if err != nil {
+			// If the structure of the body is wrong, return an HTTP error
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+		err = validate.Struct(reset)
+		if err != nil {
+			utils.ValidateRequest(err, w)
+		}
+		if reset.Password != reset.ConfirmPassword {
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write(errorz.NewError("password reset error", "password not matched", "password and confirm password is not same"))
+			return
+		}
+		c := auth.NewUserService(conn)
+		err = c.ResetPassword(ctx, reset)
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write(errorz.NewError("password reset error", "check request body", err.Error()))
+			return
+		}
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("user password reset successful"))
+	}
+}

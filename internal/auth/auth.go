@@ -10,10 +10,15 @@ import (
 type UserService interface {
 	RegisterUser(ctx context.Context, user model.Register) error
 	LoginUser(ctx context.Context, user model.Login) error
+	ResetPassword(ctx context.Context, reset model.ResetPassword) error
 }
 
 type userService struct {
 	userRepository store.CryptoService
+}
+
+func (u userService) ResetPassword(ctx context.Context, reset model.ResetPassword) error {
+	return u.userRepository.ResetPassword(ctx, reset)
 }
 
 func (u userService) LoginUser(ctx context.Context, user model.Login) error {

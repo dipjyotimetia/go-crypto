@@ -26,6 +26,8 @@ func GoCrypto(w http.ResponseWriter, r *http.Request) {
 	rc.Route("/api", func(rc chi.Router) {
 		rc.Post("/register", router.Register(ctx, validate, conn))
 		rc.Post("/login", router.Signin(ctx, validate, conn))
+		rc.Post("/reset", router.ResetUser(ctx, validate, conn))
+		rc.Post("/logout", router.Logout())
 		rc.Get("/refresh", router.Refresh())
 		rc.Get("/welcome", router.Welcome())
 	})

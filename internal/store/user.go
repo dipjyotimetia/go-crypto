@@ -5,7 +5,9 @@ import (
 	"fmt"
 	"time"
 
+	"cloud.google.com/go/firestore"
 	"github.com/go-crypto/internal/model"
+	"github.com/go-crypto/pkg/utils"
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/crypto/bcrypt"
 	"google.golang.org/grpc/codes"
@@ -38,16 +40,32 @@ func (s Store) LoginUser(ctx context.Context, user model.Login) error {
 	data, err := s.Collection("users").Doc(user.Email).Get(ctx)
 	if err != nil {
 		log.Error("error while getting user info", err.Error())
-		return err
+		return fmt.Errorf("error while getting user info")
 	}
 	if err = data.DataTo(&userData); err != nil {
 		log.Error("error while updating price info", err.Error())
-		return err
+		return fmt.Errorf("error while unmarshaling data")
 	}
 	err = CheckPasswordHash(user.Password, userData.Password)
 	if err != nil {
 		log.Error("error wrong password", err.Error())
-		return err
+		return fmt.Errorf("error wrong password")
+	}
+	return nil
+}
+
+func (s Store) ResetPassword(ctx context.Context, reset model.ResetPassword) error {
+	if ok, _ := utils.ValidatePasswordReset(reset); ok {
+		password := createHashedPassword(reset.Password)
+		_, err := s.Collection("users").Doc(reset.Email).Update(ctx, []firestore.Update{
+			{
+				Path:  "password",
+				Value: password,
+			},
+		})
+		if err != nil {
+			return fmt.Errorf("failed to update password")
+		}
 	}
 	return nil
 }

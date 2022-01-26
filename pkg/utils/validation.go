@@ -4,6 +4,7 @@ import (
 	"errors"
 	"net/http"
 
+	"github.com/go-crypto/internal/model"
 	"github.com/go-crypto/pkg/errorz"
 	"github.com/go-playground/validator/v10"
 	log "github.com/sirupsen/logrus"
@@ -21,4 +22,15 @@ func ValidateRequest(err error, w http.ResponseWriter) {
 	}
 	w.WriteHeader(http.StatusBadRequest)
 	w.Write(errorz.NewError("validation error", "check request body", err.Error()))
+}
+
+// ValidatePasswordReset validating password reset
+func ValidatePasswordReset(resetPassword model.ResetPassword) (bool, string) {
+	if len(resetPassword.Password) < 4 {
+		return false, "Invalid password, password should be more than 4 characters"
+	}
+	if resetPassword.Password != resetPassword.ConfirmPassword {
+		return false, "Password reset failed, passwords must match"
+	}
+	return true, "Password validated successfully"
 }
