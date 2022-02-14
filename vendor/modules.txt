@@ -11,7 +11,7 @@ cloud.google.com/go/firestore
 cloud.google.com/go/firestore/apiv1
 # cloud.google.com/go/functions v1.0.0
 cloud.google.com/go/functions/metadata
-# github.com/GoogleCloudPlatform/functions-framework-go v1.5.2
+# github.com/GoogleCloudPlatform/functions-framework-go v1.5.3
 ## explicit
 github.com/GoogleCloudPlatform/functions-framework-go/funcframework
 github.com/GoogleCloudPlatform/functions-framework-go/internal/events/pubsub
