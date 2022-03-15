@@ -236,8 +236,8 @@ func (s *CreateOCOService) Price(price string) *CreateOCOService {
 	return s
 }
 
-// limitIcebergQuantity set limitIcebergQuantity
-func (s *CreateOCOService) limitIcebergQuantity(limitIcebergQty string) *CreateOCOService {
+// LimitIcebergQuantity set limitIcebergQuantity
+func (s *CreateOCOService) LimitIcebergQuantity(limitIcebergQty string) *CreateOCOService {
 	s.limitIcebergQty = &limitIcebergQty
 	return s
 }
@@ -376,6 +376,42 @@ type OCOOrderReport struct {
 	Side                     SideType        `json:"side"`
 	StopPrice                string          `json:"stopPrice"`
 	IcebergQuantity          string          `json:"icebergQty"`
+}
+
+// ListOpenOcoService list opened oco
+type ListOpenOcoService struct {
+	c *Client
+}
+
+// oco define oco info
+type Oco struct {
+	Symbol            string   `json:"symbol"`
+	OrderListId       int64    `json:"orderListId"`
+	ContingencyType   string   `json:"contingencyType"`
+	ListStatusType    string   `json:"listStatusType"`
+	ListOrderStatus   string   `json:"listOrderStatus"`
+	ListClientOrderID string   `json:"listClientOrderId"`
+	TransactionTime   int64    `json:"transactionTime"`
+	Orders            []*Order `json:"orders"`
+}
+
+// Do send request
+func (s *ListOpenOcoService) Do(ctx context.Context, opts ...RequestOption) (res []*Oco, err error) {
+	r := &request{
+		method:   http.MethodGet,
+		endpoint: "/api/v3/openOrderList ",
+		secType:  secTypeSigned,
+	}
+	data, err := s.c.callAPI(ctx, r, opts...)
+	if err != nil {
+		return []*Oco{}, err
+	}
+	res = make([]*Oco, 0)
+	err = json.Unmarshal(data, &res)
+	if err != nil {
+		return []*Oco{}, err
+	}
+	return res, nil
 }
 
 // ListOpenOrdersService list opened orders
