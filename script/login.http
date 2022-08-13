@@ -1,0 +1,36 @@
+### register account
+POST {{ENDPOINT}}/api/register
+Content-Type: application/json
+
+{
+  "name": "Go Crypto",
+  "password": "Password1",
+  "email": "gocrypto@gmail.com"
+}
+
+### login account
+POST {{ENDPOINT}}/api/login
+Content-Type: application/json
+
+{
+  "email": {{email}},
+  "password": {{password}}
+}
+
+### welcome request
+GET {{ENDPOINT}}/api/welcome
+Accept: application/json
+
+### refresh token
+GET {{ENDPOINT}}/api/refresh
+Accept: application/json
+
+### Reset password
+POST {{ENDPOINT}}/api/rest
+Content-Type: application/json
+
+{
+  "email": {{email}},
+  "password": "Password3",
+  "confirm_password": "Password3"
+}

@@ -19,7 +19,7 @@ import (
 var jwtKey = []byte("my_secret_key")
 
 // Signin Create the Signin handler
-func Signin(ctx context.Context, validate *validator.Validate, conn store.CryptoService) func(w http.ResponseWriter, r *http.Request) {
+func Signin(ctx context.Context, validate *validator.Validate, conn store.UserService) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		w.Header().Set("x-request-id", uuid.NewString())

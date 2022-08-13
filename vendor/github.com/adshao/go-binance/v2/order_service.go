@@ -2,7 +2,7 @@ package binance
 
 import (
 	"context"
-	"encoding/json"
+	stdjson "encoding/json"
 	"net/http"
 )
 
@@ -19,6 +19,7 @@ type CreateOrderService struct {
 	price            *string
 	newClientOrderID *string
 	stopPrice        *string
+	trailingDelta    *string
 	icebergQuantity  *string
 }
 
@@ -76,6 +77,12 @@ func (s *CreateOrderService) StopPrice(stopPrice string) *CreateOrderService {
 	return s
 }
 
+// TrailingDelta set trailingDelta
+func (s *CreateOrderService) TrailingDelta(trailingDelta string) *CreateOrderService {
+	s.trailingDelta = &trailingDelta
+	return s
+}
+
 // IcebergQuantity set icebergQuantity
 func (s *CreateOrderService) IcebergQuantity(icebergQuantity string) *CreateOrderService {
 	s.icebergQuantity = &icebergQuantity
@@ -116,6 +123,9 @@ func (s *CreateOrderService) createOrder(ctx context.Context, endpoint string, o
 	}
 	if s.stopPrice != nil {
 		m["stopPrice"] = *s.stopPrice
+	}
+	if s.trailingDelta != nil {
+		m["trailingDelta"] = *s.trailingDelta
 	}
 	if s.icebergQuantity != nil {
 		m["icebergQty"] = *s.icebergQuantity
@@ -176,6 +186,7 @@ type CreateOrderResponse struct {
 
 // Fill may be returned in an array of fills in a CreateOrderResponse.
 type Fill struct {
+	TradeID         int    `json:"tradeId"`
 	Price           string `json:"price"`
 	Quantity        string `json:"qty"`
 	Commission      string `json:"commission"`
@@ -236,8 +247,8 @@ func (s *CreateOCOService) Price(price string) *CreateOCOService {
 	return s
 }
 
-// limitIcebergQuantity set limitIcebergQuantity
-func (s *CreateOCOService) limitIcebergQuantity(limitIcebergQty string) *CreateOCOService {
+// LimitIcebergQuantity set limitIcebergQuantity
+func (s *CreateOCOService) LimitIcebergQuantity(limitIcebergQty string) *CreateOCOService {
 	s.limitIcebergQty = &limitIcebergQty
 	return s
 }
@@ -376,6 +387,42 @@ type OCOOrderReport struct {
 	Side                     SideType        `json:"side"`
 	StopPrice                string          `json:"stopPrice"`
 	IcebergQuantity          string          `json:"icebergQty"`
+}
+
+// ListOpenOcoService list opened oco
+type ListOpenOcoService struct {
+	c *Client
+}
+
+// oco define oco info
+type Oco struct {
+	Symbol            string   `json:"symbol"`
+	OrderListId       int64    `json:"orderListId"`
+	ContingencyType   string   `json:"contingencyType"`
+	ListStatusType    string   `json:"listStatusType"`
+	ListOrderStatus   string   `json:"listOrderStatus"`
+	ListClientOrderID string   `json:"listClientOrderId"`
+	TransactionTime   int64    `json:"transactionTime"`
+	Orders            []*Order `json:"orders"`
+}
+
+// Do send request
+func (s *ListOpenOcoService) Do(ctx context.Context, opts ...RequestOption) (res []*Oco, err error) {
+	r := &request{
+		method:   http.MethodGet,
+		endpoint: "/api/v3/openOrderList ",
+		secType:  secTypeSigned,
+	}
+	data, err := s.c.callAPI(ctx, r, opts...)
+	if err != nil {
+		return []*Oco{}, err
+	}
+	res = make([]*Oco, 0)
+	err = json.Unmarshal(data, &res)
+	if err != nil {
+		return []*Oco{}, err
+	}
+	return res, nil
 }
 
 // ListOpenOrdersService list opened orders
@@ -707,7 +754,7 @@ func (s *CancelOpenOrdersService) Do(ctx context.Context, opts ...RequestOption)
 	if err != nil {
 		return &CancelOpenOrdersResponse{}, err
 	}
-	rawMessages := make([]*json.RawMessage, 0)
+	rawMessages := make([]*stdjson.RawMessage, 0)
 	err = json.Unmarshal(data, &rawMessages)
 	if err != nil {
 		return &CancelOpenOrdersResponse{}, err

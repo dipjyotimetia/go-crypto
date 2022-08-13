@@ -14,7 +14,7 @@ type UserService interface {
 }
 
 type userService struct {
-	userRepository store.CryptoService
+	userRepository store.UserService
 }
 
 func (u userService) ResetPassword(ctx context.Context, reset model.ResetPassword) error {
@@ -29,6 +29,6 @@ func (u userService) RegisterUser(ctx context.Context, user model.Register) erro
 	return u.userRepository.RegisterUser(ctx, user)
 }
 
-func NewUserService(store store.CryptoService) UserService {
+func NewUserService(store store.UserService) UserService {
 	return &userService{userRepository: store}
 }

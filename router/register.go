@@ -15,7 +15,7 @@ import (
 )
 
 // Register Create the Register handler
-func Register(ctx context.Context, validate *validator.Validate, conn store.CryptoService) func(w http.ResponseWriter, r *http.Request) {
+func Register(ctx context.Context, validate *validator.Validate, conn store.UserService) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		w.Header().Set("x-request-id", uuid.NewString())
@@ -43,7 +43,7 @@ func Register(ctx context.Context, validate *validator.Validate, conn store.Cryp
 	}
 }
 
-func ResetUser(ctx context.Context, validate *validator.Validate, conn store.CryptoService) func(w http.ResponseWriter, r *http.Request) {
+func ResetUser(ctx context.Context, validate *validator.Validate, conn store.UserService) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		w.Header().Set("x-request-id", uuid.NewString())

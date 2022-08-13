@@ -23,6 +23,11 @@ func (s Store) RegisterUser(ctx context.Context, user model.Register) error {
 			Email:     user.Email,
 			CreatedAt: time.Now().UTC().Format(time.RFC3339),
 			UpdatedAt: time.Now().UTC().Format(time.RFC3339),
+			Status: model.AccountStatus{
+				Locked:     false,
+				LockedAt:   nil,
+				LoginCount: 0,
+			},
 		})
 		if err != nil {
 			log.Error("error while registering user", err.Error())
@@ -69,6 +74,10 @@ func (s Store) ResetPassword(ctx context.Context, reset model.ResetPassword) err
 	}
 	return nil
 }
+
+// func (s Store) checkAccountStatus(ctx context.Context, reset model.AccountStatus) {
+// data, Err := s.Collection("users").Doc("status.").Get(ctx)
+// }
 
 // CreateHashedPassword created password hashed
 func createHashedPassword(password string) string {
