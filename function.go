@@ -3,6 +3,7 @@ package p
 import (
 	"context"
 	"net/http"
+	"sync"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
@@ -12,9 +13,21 @@ import (
 	"github.com/rs/cors"
 )
 
-var validate *validator.Validate
+var (
+	validate *validator.Validate
+	onceFunc sync.Once
+)
 
 func GoCrypto(w http.ResponseWriter, r *http.Request) {
+	onceBody := func() {
+		crypto(w, r)
+	}
+	go func() {
+		onceFunc.Do(onceBody)
+	}()
+}
+
+func crypto(w http.ResponseWriter, r *http.Request) {
 	rc := chi.NewRouter()
 	rc.Use(middleware.RealIP)
 	rc.Use(middleware.Logger)
