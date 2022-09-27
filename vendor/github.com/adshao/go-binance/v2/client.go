@@ -90,6 +90,13 @@ type LiquidityRewardType int
 // RewardClaimStatus define the status of claiming a reward
 type RewardClaimStatus int
 
+// RateLimitType define the rate limitation types
+// see https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md#enum-definitions
+type RateLimitType string
+
+// RateLimitInterval define the rate limitation intervals
+type RateLimitInterval string
+
 // Endpoints
 const (
 	baseAPIMainURL    = "https://api.binance.com"
@@ -209,6 +216,14 @@ const (
 
 	RewardClaimPending RewardClaimStatus = 0
 	RewardClaimDone    RewardClaimStatus = 1
+
+	RateLimitTypeRequestWeight RateLimitType = "REQUEST_WEIGHT"
+	RateLimitTypeOrders        RateLimitType = "ORDERS"
+	RateLimitTypeRawRequests   RateLimitType = "RAW_REQUESTS"
+
+	RateLimitIntervalSecond RateLimitInterval = "SECOND"
+	RateLimitIntervalMinute RateLimitInterval = "MINUTE"
+	RateLimitIntervalDay    RateLimitInterval = "DAY"
 )
 
 func currentTimestamp() int64 {
@@ -458,6 +473,11 @@ func (c *Client) NewListBookTickersService() *ListBookTickersService {
 	return &ListBookTickersService{c: c}
 }
 
+// NewListSymbolTickerService init listing symbols tickers
+func (c *Client) NewListSymbolTickerService() *ListSymbolTickerService {
+	return &ListSymbolTickerService{c: c}
+}
+
 // NewCreateOrderService init creating order service
 func (c *Client) NewCreateOrderService() *CreateOrderService {
 	return &CreateOrderService{c: c}
@@ -511,6 +531,16 @@ func (c *Client) NewGetAccountService() *GetAccountService {
 // NewGetAPIKeyPermission init getting API key permission
 func (c *Client) NewGetAPIKeyPermission() *GetAPIKeyPermission {
 	return &GetAPIKeyPermission{c: c}
+}
+
+// NewSavingFlexibleProductPositionsService get flexible products positions (Savings)
+func (c *Client) NewSavingFlexibleProductPositionsService() *SavingFlexibleProductPositionsService {
+	return &SavingFlexibleProductPositionsService{c: c}
+}
+
+// NewSavingFixedProjectPositionsService get fixed project positions (Savings)
+func (c *Client) NewSavingFixedProjectPositionsService() *SavingFixedProjectPositionsService {
+	return &SavingFixedProjectPositionsService{c: c}
 }
 
 // NewListSavingsFlexibleProductsService get flexible products list (Savings)
@@ -586,6 +616,11 @@ func (c *Client) NewCloseUserStreamService() *CloseUserStreamService {
 // NewExchangeInfoService init exchange info service
 func (c *Client) NewExchangeInfoService() *ExchangeInfoService {
 	return &ExchangeInfoService{c: c}
+}
+
+// NewRateLimitService init rate limit service
+func (c *Client) NewRateLimitService() *RateLimitService {
+	return &RateLimitService{c: c}
 }
 
 // NewGetAssetDetailService init get asset detail service
@@ -891,4 +926,34 @@ func (c *Client) NewRemoveLiquidityService() *RemoveLiquidityService {
 // NewQueryClaimedRewardHistoryService init the service to query reward claiming history
 func (c *Client) NewQueryClaimedRewardHistoryService() *QueryClaimedRewardHistoryService {
 	return &QueryClaimedRewardHistoryService{c: c}
+}
+
+// NewGetBNBBurnService init the service to get BNB Burn on spot trade and margin interest
+func (c *Client) NewGetBNBBurnService() *GetBNBBurnService {
+	return &GetBNBBurnService{c: c}
+}
+
+// NewToggleBNBBurnService init the service to toggle BNB Burn on spot trade and margin interest
+func (c *Client) NewToggleBNBBurnService() *ToggleBNBBurnService {
+	return &ToggleBNBBurnService{c: c}
+}
+
+// NewInternalUniversalTransferService Universal Transfer (For Master Account)
+func (c *Client) NewInternalUniversalTransferService() *InternalUniversalTransferService {
+	return &InternalUniversalTransferService{c: c}
+}
+
+// NewInternalUniversalTransferHistoryService Query Universal Transfer History (For Master Account)
+func (c *Client) NewInternalUniversalTransferHistoryService() *InternalUniversalTransferHistoryService {
+	return &InternalUniversalTransferHistoryService{c: c}
+}
+
+// NewSubAccountListService Query Sub-account List (For Master Account)
+func (c *Client) NewSubAccountListService() *SubAccountListService {
+	return &SubAccountListService{c: c}
+}
+
+// NewGetUserAsset Get user assets, just for positive data
+func (c *Client) NewGetUserAsset() *GetUserAssetService {
+	return &GetUserAssetService{c: c}
 }
