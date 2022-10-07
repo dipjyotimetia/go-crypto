@@ -1,15 +1,15 @@
-# cloud.google.com/go v0.97.0
-cloud.google.com/go
-cloud.google.com/go/compute/metadata
+# cloud.google.com/go v0.104.0
 cloud.google.com/go/internal/btree
 cloud.google.com/go/internal/fields
 cloud.google.com/go/internal/trace
-cloud.google.com/go/internal/version
-# cloud.google.com/go/firestore v1.6.1
+# cloud.google.com/go/compute v1.7.0
+cloud.google.com/go/compute/metadata
+# cloud.google.com/go/firestore v1.7.0
 ## explicit
 cloud.google.com/go/firestore
 cloud.google.com/go/firestore/apiv1
-# cloud.google.com/go/functions v1.0.0
+cloud.google.com/go/firestore/internal
+# cloud.google.com/go/functions v1.6.0
 cloud.google.com/go/functions/metadata
 # github.com/GoogleCloudPlatform/functions-framework-go v1.6.1
 ## explicit
@@ -70,7 +70,7 @@ github.com/golang/protobuf/ptypes/any
 github.com/golang/protobuf/ptypes/duration
 github.com/golang/protobuf/ptypes/timestamp
 github.com/golang/protobuf/ptypes/wrappers
-# github.com/google/go-cmp v0.5.6
+# github.com/google/go-cmp v0.5.8
 github.com/google/go-cmp/cmp
 github.com/google/go-cmp/cmp/internal/diff
 github.com/google/go-cmp/cmp/internal/flags
@@ -79,10 +79,14 @@ github.com/google/go-cmp/cmp/internal/value
 # github.com/google/uuid v1.3.0
 ## explicit
 github.com/google/uuid
-# github.com/googleapis/gax-go/v2 v2.1.1
+# github.com/googleapis/enterprise-certificate-proxy v0.1.0
+github.com/googleapis/enterprise-certificate-proxy/client
+github.com/googleapis/enterprise-certificate-proxy/client/util
+# github.com/googleapis/gax-go/v2 v2.5.1
 github.com/googleapis/gax-go/v2
 github.com/googleapis/gax-go/v2/apierror
 github.com/googleapis/gax-go/v2/apierror/internal/proto
+github.com/googleapis/gax-go/v2/internal
 # github.com/gorilla/websocket v1.5.0
 github.com/gorilla/websocket
 # github.com/json-iterator/go v1.1.12
@@ -140,7 +144,7 @@ go.uber.org/zap/zapcore
 golang.org/x/crypto/bcrypt
 golang.org/x/crypto/blowfish
 golang.org/x/crypto/sha3
-# golang.org/x/net v0.0.0-20220907135653-1e95f45603a7
+# golang.org/x/net v0.0.0-20220909164309-bea034e7d591
 ## explicit
 golang.org/x/net/context
 golang.org/x/net/context/ctxhttp
@@ -151,7 +155,7 @@ golang.org/x/net/idna
 golang.org/x/net/internal/timeseries
 golang.org/x/net/publicsuffix
 golang.org/x/net/trace
-# golang.org/x/oauth2 v0.0.0-20211005180243-6b3c2da341f1
+# golang.org/x/oauth2 v0.0.0-20220909003341-f21342109be1
 golang.org/x/oauth2
 golang.org/x/oauth2/authhandler
 golang.org/x/oauth2/google
@@ -159,6 +163,8 @@ golang.org/x/oauth2/google/internal/externalaccount
 golang.org/x/oauth2/internal
 golang.org/x/oauth2/jws
 golang.org/x/oauth2/jwt
+# golang.org/x/sync v0.0.0-20220601150217-0de741cfad7f
+golang.org/x/sync/semaphore
 # golang.org/x/sys v0.0.0-20220728004956-3c1f35247d10
 golang.org/x/sys/cpu
 golang.org/x/sys/internal/unsafeheader
@@ -173,10 +179,12 @@ golang.org/x/text/secure/bidirule
 golang.org/x/text/transform
 golang.org/x/text/unicode/bidi
 golang.org/x/text/unicode/norm
-# golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
+# golang.org/x/time v0.0.0-20220609170525-579cf78fd858
+golang.org/x/time/rate
+# golang.org/x/xerrors v0.0.0-20220609144429-65e65417b02f
 golang.org/x/xerrors
 golang.org/x/xerrors/internal
-# google.golang.org/api v0.59.0
+# google.golang.org/api v0.96.0
 google.golang.org/api/googleapi
 google.golang.org/api/googleapi/transport
 google.golang.org/api/internal
@@ -185,6 +193,7 @@ google.golang.org/api/internal/third_party/uritemplates
 google.golang.org/api/iterator
 google.golang.org/api/option
 google.golang.org/api/option/internaloption
+google.golang.org/api/support/bundler
 google.golang.org/api/transport
 google.golang.org/api/transport/cert
 google.golang.org/api/transport/grpc
@@ -204,9 +213,10 @@ google.golang.org/appengine/internal/socket
 google.golang.org/appengine/internal/urlfetch
 google.golang.org/appengine/socket
 google.golang.org/appengine/urlfetch
-# google.golang.org/genproto v0.0.0-20211028162531-8db9c33dc351
+# google.golang.org/genproto v0.0.0-20220920201722-2b89144ce006
 google.golang.org/genproto/googleapis/api/annotations
 google.golang.org/genproto/googleapis/firestore/v1
+google.golang.org/genproto/googleapis/longrunning
 google.golang.org/genproto/googleapis/rpc/code
 google.golang.org/genproto/googleapis/rpc/errdetails
 google.golang.org/genproto/googleapis/rpc/status
@@ -273,7 +283,7 @@ google.golang.org/grpc/serviceconfig
 google.golang.org/grpc/stats
 google.golang.org/grpc/status
 google.golang.org/grpc/tap
-# google.golang.org/protobuf v1.27.1
+# google.golang.org/protobuf v1.28.1
 google.golang.org/protobuf/encoding/protojson
 google.golang.org/protobuf/encoding/prototext
 google.golang.org/protobuf/encoding/protowire
