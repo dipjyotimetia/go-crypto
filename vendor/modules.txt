@@ -4,12 +4,12 @@ cloud.google.com/go/internal/fields
 cloud.google.com/go/internal/trace
 # cloud.google.com/go/compute v1.7.0
 cloud.google.com/go/compute/metadata
-# cloud.google.com/go/firestore v1.7.0
+# cloud.google.com/go/firestore v1.8.0
 ## explicit
 cloud.google.com/go/firestore
 cloud.google.com/go/firestore/apiv1
 cloud.google.com/go/firestore/internal
-# cloud.google.com/go/functions v1.6.0
+# cloud.google.com/go/functions v1.7.0
 cloud.google.com/go/functions/metadata
 # github.com/GoogleCloudPlatform/functions-framework-go v1.6.1
 ## explicit
@@ -184,7 +184,7 @@ golang.org/x/time/rate
 # golang.org/x/xerrors v0.0.0-20220609144429-65e65417b02f
 golang.org/x/xerrors
 golang.org/x/xerrors/internal
-# google.golang.org/api v0.96.0
+# google.golang.org/api v0.98.0
 google.golang.org/api/googleapi
 google.golang.org/api/googleapi/transport
 google.golang.org/api/internal
@@ -213,7 +213,7 @@ google.golang.org/appengine/internal/socket
 google.golang.org/appengine/internal/urlfetch
 google.golang.org/appengine/socket
 google.golang.org/appengine/urlfetch
-# google.golang.org/genproto v0.0.0-20220920201722-2b89144ce006
+# google.golang.org/genproto v0.0.0-20221010155953-15ba04fc1c0e
 google.golang.org/genproto/googleapis/api/annotations
 google.golang.org/genproto/googleapis/firestore/v1
 google.golang.org/genproto/googleapis/longrunning
