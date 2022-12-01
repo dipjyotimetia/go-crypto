@@ -3,7 +3,7 @@ module github.com/go-crypto
 go 1.16
 
 require (
-	cloud.google.com/go/firestore v1.8.0
+	cloud.google.com/go/firestore v1.9.0
 	github.com/GoogleCloudPlatform/functions-framework-go v1.6.1
 	github.com/adshao/go-binance/v2 v2.3.10
 	github.com/go-chi/chi/v5 v5.0.7
@@ -15,6 +15,6 @@ require (
 	github.com/sirupsen/logrus v1.9.0
 	github.com/stretchr/testify v1.8.1
 	golang.org/x/crypto v0.0.0-20220829220503-c86fa9a7ed90
-	golang.org/x/net v0.0.0-20220909164309-bea034e7d591
+	golang.org/x/net v0.0.0-20221014081412-f15817d10f9b
 	google.golang.org/grpc v1.51.0
 )
