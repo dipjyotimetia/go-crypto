@@ -15,7 +15,7 @@ jobs:
         with:
           credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
       - id: 'deploy'
-        uses: 'google-github-actions/deploy-cloud-functions@v0'
+        uses: 'google-github-actions/deploy-cloud-functions@v1'
         with:
           name: 'GoCrypto'
           runtime: 'go116'
