@@ -46,7 +46,7 @@ github.com/cloudevents/sdk-go/v2/protocol/http
 github.com/cloudevents/sdk-go/v2/types
 # github.com/davecgh/go-spew v1.1.1
 github.com/davecgh/go-spew/spew
-# github.com/go-chi/chi/v5 v5.0.7
+# github.com/go-chi/chi/v5 v5.0.8
 ## explicit
 github.com/go-chi/chi/v5
 github.com/go-chi/chi/v5/middleware
