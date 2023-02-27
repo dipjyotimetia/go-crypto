@@ -13,7 +13,7 @@ require (
 	github.com/google/uuid v1.3.0
 	github.com/rs/cors v1.8.3
 	github.com/sirupsen/logrus v1.9.0
-	github.com/stretchr/testify v1.8.1
+	github.com/stretchr/testify v1.8.2
 	golang.org/x/crypto v0.6.0
 	golang.org/x/net v0.7.0
 	google.golang.org/grpc v1.53.0
