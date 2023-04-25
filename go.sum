@@ -394,8 +394,8 @@ cloud.google.com/go/workflows v1.9.0/go.mod h1:ZGkj1aFIOd9c8Gerkjjq7OW7I5+l6cSvT
 dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7gZCb22OMCxBHrMx7a5I7Hp++hsVxbQ4BYO7hU=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
-github.com/GoogleCloudPlatform/functions-framework-go v1.7.0 h1:XOsieP+9TUX2TwtfIijBySDXliP2JpKXUrdX1PD4jkQ=
-github.com/GoogleCloudPlatform/functions-framework-go v1.7.0/go.mod h1:pq+lZy4vONJ5fjd3q/B6QzWhfHPAbuVweLpxZzMOb9Y=
+github.com/GoogleCloudPlatform/functions-framework-go v1.7.1 h1:b7nZ+u+2Tr8c2a83ilVDhUig5PtPuNehTOx2HCE3BQo=
+github.com/GoogleCloudPlatform/functions-framework-go v1.7.1/go.mod h1:pq+lZy4vONJ5fjd3q/B6QzWhfHPAbuVweLpxZzMOb9Y=
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
 github.com/adshao/go-binance/v2 v2.4.1 h1:fOZ2tCbN7sgDZvvsawUMjhsOoe40X87JVE4DklIyyyc=
 github.com/adshao/go-binance/v2 v2.4.1/go.mod h1:6Qoh+CYcj8U43h4HgT6mqJnsGj4mWZKA/nsj8LN8ZTU=
