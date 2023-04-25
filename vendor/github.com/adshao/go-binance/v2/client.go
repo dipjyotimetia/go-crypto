@@ -97,6 +97,9 @@ type RateLimitType string
 // RateLimitInterval define the rate limitation intervals
 type RateLimitInterval string
 
+// AccountType define the account types
+type AccountType string
+
 // Endpoints
 const (
 	baseAPIMainURL    = "https://api.binance.com"
@@ -148,10 +151,12 @@ const (
 	SymbolStatusTypeAuctionMatch SymbolStatusType = "AUCTION_MATCH"
 	SymbolStatusTypeBreak        SymbolStatusType = "BREAK"
 
-	SymbolFilterTypeLotSize          SymbolFilterType = "LOT_SIZE"
-	SymbolFilterTypePriceFilter      SymbolFilterType = "PRICE_FILTER"
-	SymbolFilterTypePercentPrice     SymbolFilterType = "PERCENT_PRICE"
-	SymbolFilterTypeMinNotional      SymbolFilterType = "MIN_NOTIONAL"
+	SymbolFilterTypeLotSize      SymbolFilterType = "LOT_SIZE"
+	SymbolFilterTypePriceFilter  SymbolFilterType = "PRICE_FILTER"
+	SymbolFilterTypePercentPrice SymbolFilterType = "PERCENT_PRICE"
+	// Deprecated: use SymbolFilterTypePercentPrice instead
+	SymbolFilterTypeMinNotional      SymbolFilterType = "NOTIONAL"
+	SymbolFilterTypeNotional         SymbolFilterType = "NOTIONAL"
 	SymbolFilterTypeIcebergParts     SymbolFilterType = "ICEBERG_PARTS"
 	SymbolFilterTypeMarketLotSize    SymbolFilterType = "MARKET_LOT_SIZE"
 	SymbolFilterTypeMaxNumAlgoOrders SymbolFilterType = "MAX_NUM_ALGO_ORDERS"
@@ -224,6 +229,12 @@ const (
 	RateLimitIntervalSecond RateLimitInterval = "SECOND"
 	RateLimitIntervalMinute RateLimitInterval = "MINUTE"
 	RateLimitIntervalDay    RateLimitInterval = "DAY"
+
+	AccountTypeSpot           AccountType = "SPOT"
+	AccountTypeMargin         AccountType = "MARGIN"
+	AccountTypeIsolatedMargin AccountType = "ISOLATED_MARGIN"
+	AccountTypeUSDTFuture     AccountType = "USDT_FUTURE"
+	AccountTypeCoinFuture     AccountType = "COIN_FUTURE"
 )
 
 func currentTimestamp() int64 {
@@ -699,6 +710,10 @@ func (c *Client) NewGetIsolatedMarginAccountService() *GetIsolatedMarginAccountS
 	return &GetIsolatedMarginAccountService{c: c}
 }
 
+func (c *Client) NewIsolatedMarginTransferService() *IsolatedMarginTransferService {
+	return &IsolatedMarginTransferService{c: c}
+}
+
 // NewGetMarginAssetService init get margin asset service
 func (c *Client) NewGetMarginAssetService() *GetMarginAssetService {
 	return &GetMarginAssetService{c: c}
@@ -792,6 +807,11 @@ func (c *Client) NewListDustLogService() *ListDustLogService {
 // NewDustTransferService init dust transfer service
 func (c *Client) NewDustTransferService() *DustTransferService {
 	return &DustTransferService{c: c}
+}
+
+// NewListDustService init dust list service
+func (c *Client) NewListDustService() *ListDustService {
+	return &ListDustService{c: c}
 }
 
 // NewTransferToSubAccountService transfer to subaccount service
@@ -967,4 +987,24 @@ func (c *Client) NewSubAccountListService() *SubAccountListService {
 // NewGetUserAsset Get user assets, just for positive data
 func (c *Client) NewGetUserAsset() *GetUserAssetService {
 	return &GetUserAssetService{c: c}
+}
+
+// NewManagedSubAccountDepositService Deposit Assets Into The Managed Sub-account（For Investor Master Account）
+func (c *Client) NewManagedSubAccountDepositService() *ManagedSubAccountDepositService {
+	return &ManagedSubAccountDepositService{c: c}
+}
+
+// NewManagedSubAccountWithdrawalService Withdrawal Assets From The Managed Sub-account（For Investor Master Account）
+func (c *Client) NewManagedSubAccountWithdrawalService() *ManagedSubAccountWithdrawalService {
+	return &ManagedSubAccountWithdrawalService{c: c}
+}
+
+// NewManagedSubAccountAssetsService Withdrawal Assets From The Managed Sub-account（For Investor Master Account）
+func (c *Client) NewManagedSubAccountAssetsService() *ManagedSubAccountAssetsService {
+	return &ManagedSubAccountAssetsService{c: c}
+}
+
+// NewSubAccountFuturesAccountService Get Detail on Sub-account's Futures Account (For Master Account)
+func (c *Client) NewSubAccountFuturesAccountService() *SubAccountFuturesAccountService {
+	return &SubAccountFuturesAccountService{c: c}
 }
