@@ -3,7 +3,7 @@ module github.com/go-crypto
 go 1.16
 
 require (
-	cloud.google.com/go/firestore v1.9.0
+	cloud.google.com/go/firestore v1.10.0
 	github.com/GoogleCloudPlatform/functions-framework-go v1.7.3
 	github.com/adshao/go-binance/v2 v2.4.2
 	github.com/go-chi/chi/v5 v5.0.8
