@@ -135,7 +135,7 @@ github.com/rs/cors
 # github.com/sirupsen/logrus v1.9.2
 ## explicit
 github.com/sirupsen/logrus
-# github.com/stretchr/testify v1.8.3
+# github.com/stretchr/testify v1.8.4
 ## explicit
 github.com/stretchr/testify/assert
 github.com/stretchr/testify/require
