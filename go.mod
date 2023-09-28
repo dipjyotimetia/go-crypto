@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	cloud.google.com/go/firestore v1.13.0
-	github.com/GoogleCloudPlatform/functions-framework-go v1.7.4
+	github.com/GoogleCloudPlatform/functions-framework-go v1.8.0
 	github.com/adshao/go-binance/v2 v2.4.5
 	github.com/go-chi/chi/v5 v5.0.10
 	github.com/go-playground/validator/v10 v10.15.4
