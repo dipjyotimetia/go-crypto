@@ -9,7 +9,7 @@ cloud.google.com/go/compute/internal
 # cloud.google.com/go/compute/metadata v0.2.3
 ## explicit; go 1.19
 cloud.google.com/go/compute/metadata
-# cloud.google.com/go/firestore v1.13.0
+# cloud.google.com/go/firestore v1.14.0
 ## explicit; go 1.19
 cloud.google.com/go/firestore
 cloud.google.com/go/firestore/apiv1
