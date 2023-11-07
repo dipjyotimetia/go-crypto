@@ -29,6 +29,6 @@ jobs:
           GoCrypto
           --region=australia-southeast1
           --source=.
-          --runtime=go120
+          --runtime=go121
           --gen2
           --set-secrets='API_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_API_KEY/versions/1,SECRET_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_SECRET_KEY/versions/1,PROJECT_ID=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/PROJECT_ID/versions/1'
