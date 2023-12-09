@@ -11,24 +11,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - id: auth
-        uses: google-github-actions/auth@v1
+        uses: google-github-actions/auth@v2
         with:
           credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
           token_format: 'access_token'
           access_token_lifetime: '300s'
-
-      - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v1'
-        with:
-          version: '>= 416.0.0'
       - id: 'deploy'
-        run: >
-          gcloud
-          functions
-          deploy
-          GoCrypto
-          --region=australia-southeast1
-          --source=.
-          --runtime=go121
-          --gen2
-          --set-secrets='API_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_API_KEY/versions/1,SECRET_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_SECRET_KEY/versions/1,PROJECT_ID=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/PROJECT_ID/versions/1'
+        uses: 'google-github-actions/deploy-cloud-functions@v1'
+        with:
+          name: 'GoCrypto'
+          runtime: 'go121'
+          region: 'australia-southeast1'
+          secret_environment_variables: 'API_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_API_KEY/versions/1,SECRET_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_SECRET_KEY/versions/1,PROJECT_ID=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/PROJECT_ID/versions/1'
