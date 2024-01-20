@@ -7,7 +7,7 @@ require (
 	github.com/GoogleCloudPlatform/functions-framework-go v1.8.0
 	github.com/adshao/go-binance/v2 v2.4.5
 	github.com/go-chi/chi/v5 v5.0.11
-	github.com/go-playground/validator/v10 v10.16.0
+	github.com/go-playground/validator/v10 v10.17.0
 	github.com/go-resty/resty/v2 v2.11.0
 	github.com/golang-jwt/jwt/v4 v4.5.0
 	github.com/google/uuid v1.5.0
