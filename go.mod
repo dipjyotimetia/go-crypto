@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	cloud.google.com/go/firestore v1.14.0
-	github.com/GoogleCloudPlatform/functions-framework-go v1.8.0
+	github.com/GoogleCloudPlatform/functions-framework-go v1.8.1
 	github.com/adshao/go-binance/v2 v2.4.5
 	github.com/go-chi/chi/v5 v5.0.11
 	github.com/go-playground/validator/v10 v10.18.0
