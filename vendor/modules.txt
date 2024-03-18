@@ -27,12 +27,13 @@ github.com/GoogleCloudPlatform/functions-framework-go/funcframework
 github.com/GoogleCloudPlatform/functions-framework-go/internal/events/pubsub
 github.com/GoogleCloudPlatform/functions-framework-go/internal/fftypes
 github.com/GoogleCloudPlatform/functions-framework-go/internal/registry
-# github.com/adshao/go-binance/v2 v2.4.5
+# github.com/adshao/go-binance/v2 v2.5.0
 ## explicit; go 1.18
 github.com/adshao/go-binance/v2
 github.com/adshao/go-binance/v2/common
 github.com/adshao/go-binance/v2/delivery
 github.com/adshao/go-binance/v2/futures
+github.com/adshao/go-binance/v2/options
 # github.com/bitly/go-simplejson v0.5.0
 ## explicit
 github.com/bitly/go-simplejson
