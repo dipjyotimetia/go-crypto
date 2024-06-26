@@ -13,11 +13,14 @@ jobs:
       id-token: 'write'
     steps:
       - uses: actions/checkout@v4
+      
       - id: auth
         uses: google-github-actions/auth@v2
         with:
           project_id: "dev-aileron-214211"
           workload_identity_provider: 'projects/1042576031837/locations/global/workloadIdentityPools/worker-pool/providers/gha-provider'
+          service_account: ${{ secrets.SERVICE_ACCOUNT }}
+      
       - id: 'deploy'
         uses: 'google-github-actions/deploy-cloud-functions@v3'
         with:
