@@ -16,7 +16,7 @@ jobs:
       - id: auth
         uses: google-github-actions/auth@v2
         with:
-          project_id: ${{ secrets.GCP_PROJECT_NUMBER }}
+          project_id: "dev-aileron-214211"
           workload_identity_provider: 'projects/1042576031837/locations/global/workloadIdentityPools/worker-pool/providers/gha-provider'
       - id: 'deploy'
         uses: 'google-github-actions/deploy-cloud-functions@v3'
@@ -25,4 +25,6 @@ jobs:
           runtime: 'go121'
           region: 'australia-southeast1'
           secrets: |-
-            API_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_API_KEY/versions/1,SECRET_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_SECRET_KEY/versions/1,PROJECT_ID=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/PROJECT_ID/versions/1
+            API_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_API_KEY/versions/1
+            SECRET_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_SECRET_KEY/versions/1
+            PROJECT_ID=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/PROJECT_ID/versions/1
