@@ -4,13 +4,14 @@ on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: 'read'
+  id-token: 'write'
+
 jobs:
   deploy:
     name: deploy
     runs-on: ubuntu-latest
-    permissions:
-      contents: 'read'
-      id-token: 'write'
     steps:
       - uses: actions/checkout@v4
       
@@ -18,7 +19,7 @@ jobs:
         uses: google-github-actions/auth@v2
         with:
           project_id: "dev-aileron-214211"
-          workload_identity_provider: 'https://iam.googleapis.com/projects/1042576031837/locations/global/workloadIdentityPools/worker-pool/providers/gha-provider'
+          workload_identity_provider: 'projects/1042576031837/locations/global/workloadIdentityPools/worker-pool/providers/gha-provider'
           service_account: ${{ secrets.SERVICE_ACCOUNT }}
           token_format: 'access_token'
           access_token_lifetime: '300s'
