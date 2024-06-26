@@ -21,6 +21,12 @@ jobs:
           project_id: "dev-aileron-214211"
           workload_identity_provider: 'projects/1042576031837/locations/global/workloadIdentityPools/worker-pool/providers/gha-provider'
           service_account: ${{ secrets.SERVICE_ACCOUNT }}
+
+      - id: 'gcloud'
+        name: 'gcloud'
+        run: |-
+          gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
+          gcloud services list
       
       - id: 'deploy'
         uses: 'google-github-actions/deploy-cloud-functions@v3'
@@ -32,3 +38,6 @@ jobs:
             API_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_API_KEY/versions/1
             SECRET_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_SECRET_KEY/versions/1
             PROJECT_ID=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/PROJECT_ID/versions/1
+
+
+gcloud iam service-accounts add-iam-policy-binding gha-deploy@dev-aileron-214211.iam.gserviceaccount.com --project="${PROJECT_ID}" --role="roles/iam.serviceAccountTokenCreator" --member=serviceAccount:gha-deploy@dev-aileron-214211.iam.gserviceaccount.com
