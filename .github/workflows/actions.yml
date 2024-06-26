@@ -38,6 +38,3 @@ jobs:
             API_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_API_KEY/versions/1
             SECRET_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_SECRET_KEY/versions/1
             PROJECT_ID=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/PROJECT_ID/versions/1
-
-
-gcloud iam service-accounts add-iam-policy-binding gha-deploy@dev-aileron-214211.iam.gserviceaccount.com --project="${PROJECT_ID}" --role="roles/iam.serviceAccountTokenCreator" --member=serviceAccount:gha-deploy@dev-aileron-214211.iam.gserviceaccount.com
