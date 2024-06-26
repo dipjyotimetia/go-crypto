@@ -20,7 +20,7 @@ jobs:
         with:
           project_id: "dev-aileron-214211"
           workload_identity_provider: 'projects/1042576031837/locations/global/workloadIdentityPools/worker-pool/providers/gha-provider'
-          service_account: ${{ secrets.SERVICE_ACCOUNT }}
+          service_account: 'gha-deploy@dev-aileron-214211.iam.gserviceaccount.com'
           token_format: 'access_token'
           access_token_lifetime: '300s'
       
