@@ -8,14 +8,16 @@ jobs:
   deploy:
     name: deploy
     runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write'
     steps:
       - uses: actions/checkout@v4
       - id: auth
         uses: google-github-actions/auth@v2
         with:
-          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
-          token_format: 'access_token'
-          access_token_lifetime: '300s'
+          project_id: ${{ secrets.GCP_PROJECT_NUMBER }}
+          workload_identity_provider: 'projects/1042576031837/locations/global/workloadIdentityPools/worker-pool/providers/gha-provider'
       - id: 'deploy'
         uses: 'google-github-actions/deploy-cloud-functions@v3'
         with:
