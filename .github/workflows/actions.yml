@@ -24,4 +24,5 @@ jobs:
           name: 'GoCrypto'
           runtime: 'go121'
           region: 'australia-southeast1'
-          secret_environment_variables: 'API_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_API_KEY/versions/1,SECRET_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_SECRET_KEY/versions/1,PROJECT_ID=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/PROJECT_ID/versions/1'
+          secrets: |-
+            API_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_API_KEY/versions/1,SECRET_KEY=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/BNC_SECRET_KEY/versions/1,PROJECT_ID=projects/${{ secrets.GCP_PROJECT_NUMBER }}/secrets/PROJECT_ID/versions/1
