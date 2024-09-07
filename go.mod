@@ -15,7 +15,7 @@ require (
 	github.com/sirupsen/logrus v1.9.3
 	github.com/stretchr/testify v1.9.0
 	golang.org/x/crypto v0.27.0
-	golang.org/x/net v0.28.0
+	golang.org/x/net v0.29.0
 	google.golang.org/grpc v1.66.0
 )
 
