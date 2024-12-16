@@ -7,7 +7,7 @@ require (
 	cloud.google.com/go/firestore v1.17.0
 	github.com/GoogleCloudPlatform/functions-framework-go v1.9.0
 	github.com/adshao/go-binance/v2 v2.7.0
-	github.com/go-chi/chi/v5 v5.1.0
+	github.com/go-chi/chi/v5 v5.2.0
 	github.com/go-playground/validator/v10 v10.23.0
 	github.com/go-resty/resty/v2 v2.16.2
 	github.com/golang-jwt/jwt/v4 v4.5.1
