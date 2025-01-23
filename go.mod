@@ -6,7 +6,7 @@ toolchain go1.22.9
 require (
 	cloud.google.com/go/firestore v1.18.0
 	github.com/GoogleCloudPlatform/functions-framework-go v1.9.1
-	github.com/adshao/go-binance/v2 v2.7.1
+	github.com/adshao/go-binance/v2 v2.7.2
 	github.com/go-chi/chi/v5 v5.2.0
 	github.com/go-playground/validator/v10 v10.24.0
 	github.com/go-resty/resty/v2 v2.16.4
