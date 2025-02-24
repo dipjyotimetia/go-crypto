@@ -1,7 +1,7 @@
 module github.com/go-crypto
 
 go 1.21
-toolchain go1.22.9
+toolchain go1.23.6
 
 require (
 	cloud.google.com/go/firestore v1.18.0
@@ -15,7 +15,7 @@ require (
 	github.com/rs/cors v1.11.1
 	github.com/sirupsen/logrus v1.9.3
 	github.com/stretchr/testify v1.10.0
-	golang.org/x/crypto v0.33.0
+	golang.org/x/crypto v0.35.0
 	golang.org/x/net v0.35.0
 	google.golang.org/grpc v1.70.0
 )
