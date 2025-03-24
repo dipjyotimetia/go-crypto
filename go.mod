@@ -1,7 +1,7 @@
 module github.com/go-crypto
 
 go 1.21
-toolchain go1.23.6
+toolchain go1.24.1
 
 require (
 	cloud.google.com/go/firestore v1.18.0
@@ -10,7 +10,7 @@ require (
 	github.com/go-chi/chi/v5 v5.2.1
 	github.com/go-playground/validator/v10 v10.25.0
 	github.com/go-resty/resty/v2 v2.16.5
-	github.com/golang-jwt/jwt/v4 v4.5.1
+	github.com/golang-jwt/jwt/v4 v4.5.2
 	github.com/google/uuid v1.6.0
 	github.com/rs/cors v1.11.1
 	github.com/sirupsen/logrus v1.9.3
