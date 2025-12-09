@@ -1,6 +1,6 @@
 module github.com/go-crypto
 
-go 1.23.0
+go 1.24.0
 
 toolchain go1.24.1
 
@@ -16,8 +16,8 @@ require (
 	github.com/rs/cors v1.11.1
 	github.com/sirupsen/logrus v1.9.3
 	github.com/stretchr/testify v1.10.0
-	golang.org/x/crypto v0.38.0
-	golang.org/x/net v0.40.0
+	golang.org/x/crypto v0.46.0
+	golang.org/x/net v0.47.0
 	google.golang.org/grpc v1.74.2
 )
 
@@ -58,9 +58,9 @@ require (
 	go.uber.org/multierr v1.1.0 // indirect
 	go.uber.org/zap v1.10.0 // indirect
 	golang.org/x/oauth2 v0.30.0 // indirect
-	golang.org/x/sync v0.14.0 // indirect
-	golang.org/x/sys v0.33.0 // indirect
-	golang.org/x/text v0.25.0 // indirect
+	golang.org/x/sync v0.19.0 // indirect
+	golang.org/x/sys v0.39.0 // indirect
+	golang.org/x/text v0.32.0 // indirect
 	golang.org/x/time v0.8.0 // indirect
 	google.golang.org/api v0.214.0 // indirect
 	google.golang.org/genproto v0.0.0-20241118233622-e639e219e697 // indirect
